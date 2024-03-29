@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Page</title>
+    <link rel="icon" type="image/jpeg" href="images/Logo.jpeg">
+    <link rel="stylesheet" type="text/css" href="Style3.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Review Page</h1>
+        <div class="content">
+            <h2>Select an Option:</h2>
+            <button onclick="showWashrooms()">Washrooms</button>
+            <button onclick="showPrayerRooms()">Prayer Rooms</button>
+        </div>
+    </div>
+
+    <div class="container" id="washroomsContainer" style="display:none;">
+        <h2>Washrooms</h2>
+        <div id="washroomsList">
+            <!-- Washroom list will be displayed here -->
+        </div>
+    </div>
+
+    <div class="container" id="prayerRoomsContainer" style="display:none;">
+        <h2>Prayer Rooms</h2>
+        <div id="prayerRoomsList">
+            <!-- Prayer room list will be displayed here -->
+        </div>
+    </div>
+
+    <!-- JavaScript for fetching and displaying washrooms and prayer rooms -->
+    <script>
+function showWashrooms() {
+    document.getElementById("washroomsContainer").style.display = "block";
+    document.getElementById("prayerRoomsContainer").style.display = "none";
+
+    // Fetch and display washroom data
+    fetch('Female_washroom.html')
+        .then(response => response.text())
+        .then(data => {
+            const washroomsData = new DOMParser().parseFromString(data, 'text/html');
+            const washroomParagraphs = washroomsData.querySelectorAll('p');
+
+            // Create a container to hold washroom data
+            const washroomListContainer = document.createElement('div');
+
+            washroomParagraphs.forEach(paragraph => {
+                const washroomEntry = document.createElement('div');
+
+                const reviewButton = document.createElement('button');
+                reviewButton.textContent = 'Give Review';
+                reviewButton.onclick = () => {
+                    // Add logic for giving review
+                    alert('Give review for: ' + paragraph.textContent);
+                };
+
+                const checkReviewButton = document.createElement('button');
+                checkReviewButton.textContent = 'Check Review';
+                checkReviewButton.onclick = () => {
+                    // Add logic for checking review
+                    alert('Check review for: ' + paragraph.textContent);
+                };
+
+                washroomEntry.appendChild(reviewButton);
+                washroomEntry.appendChild(checkReviewButton);
+
+                const washroomText = document.createElement('p');
+                washroomText.textContent = paragraph.textContent;
+
+                washroomListContainer.appendChild(washroomEntry);
+                washroomListContainer.appendChild(washroomText);
+            });
+
+            document.getElementById("washroomsList").innerHTML = washroomListContainer.innerHTML;
+        })
+        .catch(error => {
+            console.error('Error fetching washrooms:', error);
+        });
+}
+
+function showPrayerRooms() {
+    document.getElementById("washroomsContainer").style.display = "none";
+    document.getElementById("prayerRoomsContainer").style.display = "block";
+
+    // Fetch and display prayer room data
+    fetch('Prayer_room.html')
+        .then(response => response.text())
+        .then(data => {
+            const prayerRoomsData = new DOMParser().parseFromString(data, 'text/html');
+            const prayerRoomParagraphs = prayerRoomsData.querySelectorAll('p');
+
+            // Create a container to hold prayer room data
+            const prayerRoomListContainer = document.createElement('div');
+
+            prayerRoomParagraphs.forEach(paragraph => {
+                const prayerRoomEntry = document.createElement('div');
+
+                const reviewButton = document.createElement('button');
+                reviewButton.textContent = 'Give Review';
+                reviewButton.onclick = () => {
+                    // Add logic for giving review
+                    alert('Give review for: ' + paragraph.textContent);
+                };
+
+                const checkReviewButton = document.createElement('button');
+                checkReviewButton.textContent = 'Check Review';
+                checkReviewButton.onclick = () => {
+                    // Add logic for checking review
+                    alert('Check review for: ' + paragraph.textContent);
+                };
+
+                prayerRoomEntry.appendChild(reviewButton);
+                prayerRoomEntry.appendChild(checkReviewButton);
+
+                const prayerRoomText = document.createElement('p');
+                prayerRoomText.textContent = paragraph.textContent;
+
+                prayerRoomListContainer.appendChild(prayerRoomEntry);
+                prayerRoomListContainer.appendChild(prayerRoomText);
+            });
+
+            document.getElementById("prayerRoomsList").innerHTML = prayerRoomListContainer.innerHTML;
+        })
+        .catch(error => {
+            console.error('Error fetching prayer rooms:', error);
+        });
+}
+
+</script>
+</body>
+</html>

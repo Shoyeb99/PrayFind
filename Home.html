@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrayFind</title>
+    <link rel="stylesheet" type="text/css" href="Homestyle1.css">
+    <link rel="icon" type="image/jpeg" href="images/Logo.jpeg">
+</head>
+<body>
+    <div class="notification">
+        <h2><p>It's time for your prayer.</p></h2>
+    </div>
+
+    <div class="container">
+        <h1>Welcome To PrayFind!!</h1>
+        <h2>A Daily Companion for Women</h2>
+        <hr>
+        <div class="menu">
+            <h3>PrayFind is an online platform - which is developed to help women find Prayer Rooms & Washrooms across Dhaka City.</h3>
+            <a href="Prayer_room.html" title="Shows Prayer Rooms List & Location" class="btn">PRAYER ROOMS</a>
+            <a href="Female_washroom.html" title="Shows Female Washroom Rooms List & Location" class="btn">WASHROOMS</a>
+            <a href="Review.html" title="Shows Female Washroom Rooms List & Location" class="btn">REVIEW</a>
+            <a href="Donation.html" title="Shows Female Washroom Rooms List & Location" class="btn">DONATION</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Current Time of Dhaka</h2>
+        <h1><div id="current-time"></div></h1>
+        <div class="quotes">
+            <p>Pray Before You Are Prayed Upon!!</p>
+        </div>
+    </div>
+    <div class="prayer_schedule">
+        <h2>Prayer Times Today In Dhaka</h2>
+        <div id="prayer-times"></div>
+    </div>
+
+
+    <div class="map">
+        <h2>My Location</h2>
+        <div id="map" style="height: 400px;"></div>
+    </div>
+
+    <script src="script.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWhnj4M5Xb5KO8QObZfWbtsLUbkB9FH40&callback=initMap"></script>
+</body>
+</html>
